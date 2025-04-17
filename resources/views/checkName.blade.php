@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,4 +16,4 @@
         <button type="submit">Check Name</button>
     </form>
 </body>
-</html>
+</html> --}}

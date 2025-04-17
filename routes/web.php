@@ -18,11 +18,15 @@ Route::get('/', function () {
 });
 
 
-Route::get('/name-form', function () {
-    return view('checkName');
+Route::get('/NameForm', function () {
+    return view('serachName');
 });
 
 use App\Http\Controllers\NameController;                    // herer we till laravel when the user hit this route call this Controller
 
-Route::post('/check-name', [NameController::class, 'checkName']);
+Route::post('/NameForm', [NameController::class, 'checkName']);
 
+
+
+
+// php artisan serve -->> to start local server 

@@ -30,3 +30,7 @@ return new class extends Migration
         Schema::dropIfExists('names');
     }
 };
+
+
+
+// php artisan migrate -->> to create the table in DB
