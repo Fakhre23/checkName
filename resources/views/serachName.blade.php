@@ -9,6 +9,8 @@
 </head>
 <body>
 
+
+
   <div class="search-container">
     <form action="/NameForm" method="POST">
       @csrf
@@ -29,7 +31,29 @@
         </div>
       </div>
     </form>
+
+    {{-- ************* message-area inside the container *********** --}}
+
+    <div class="message-area">
+      @if (session('message'))
+        <div class="success-message">{{ session('message') }}</div>
+      @endif
+  
+      @if (session('error'))
+        <div class="error-message">{{ session('error') }}</div>
+      @endif
+    </div>
+    
   </div>
+
+  
+ {{-- ** FAQ Button *** --}}
+
+
+  <div class="faq-button">
+    <a href="/faq" class="btn-faq">Go to FAQ</a>
+  </div>
+
 
   <script src="js/main.js"></script>
 </body>

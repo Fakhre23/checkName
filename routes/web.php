@@ -22,9 +22,18 @@ Route::get('/NameForm', function () {
     return view('serachName');
 });
 
+Route::get('/faq', function () {
+    return view('faq');
+});
+
 use App\Http\Controllers\NameController;                    // herer we till laravel when the user hit this route call this Controller
 
 Route::post('/NameForm', [NameController::class, 'checkName']);
+
+Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index']);
+
+
+
 
 
 
