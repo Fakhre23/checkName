@@ -13,3 +13,4 @@ class FaqController extends Controller
         return view('faq', compact('faqs'));
     }
 }
+

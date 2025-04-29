@@ -27,7 +27,7 @@ class NameController extends Controller
         $exists = Name::where('name', $name)->exists();                                        // 3. Check if name exists in the DB
         $reserved = ReservedWord::where('word' , $name)->exists();
        
-        if ($exists) {
+        if ($exists) {  
             return redirect()->back()->with('error', 'The Name is Already exists.');
         }
 
