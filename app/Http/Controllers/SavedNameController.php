@@ -10,7 +10,7 @@ class SavedNameController extends Controller
     public function list() {
 
     $savedNames = Name::all();
-    return view('dashboard.savedNames' , compact('savedNames'));
+    return view('Names.savedNames' , compact('savedNames'));
     }
 
 

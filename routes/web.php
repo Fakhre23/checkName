@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SavedNameController;
 use App\Http\Controllers\ReservedWordController;
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;       //Illuminate is a namespace that contains many useful classes created by Laravel.
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/NameForm', function () {
-    return view('searchName');
-});
+
 
                                                          // Faq static page
 Route::get('faq', function () {
@@ -57,6 +55,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/users', [UserController::class, 'index'])->middleware('auth');
 
 
+
                                                                                         // Reserved words and saved names routes with authentication and verification
 Route::middleware(['auth', 'verified'])->group(function () {
                                                                                          // Route for reserved words
@@ -67,9 +66,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/names/{id}', [SavedNameController::class, 'destroy'])->name('savedNames.delete');
                                                                                         //Route for delete re
     Route::delete('/reserved/{id}', [ReservedWordController::class, 'destroy'])->name('ReservedWord.delete');
+
                                                                                         // to go for adding form and store it 
     Route::get('dashboard/reservedWords/create', [ReservedWordController::class, 'create'])->name('reservedWords.create');
     Route::post('dashboard/reservedWords', [ReservedWordController::class, 'store'])->name('reservedWords.store');
+
+
+
+    Route::get('/reservedWords/{id}/edit', [ReservedWordController::class , 'edit'])->name('reservedWords.edit');
+    Route::put('/reservedWords/{id}'. [ReservedWordController::class. 'update'])->name('reservedWords.update');
+
+
+
+
+    Route::get('/NameForm', function () {                       //show the check name page
+        return view('searchName');
+    });
+
+
+    
 
 
 });

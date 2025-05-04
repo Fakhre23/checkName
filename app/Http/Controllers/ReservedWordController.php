@@ -9,7 +9,7 @@ class ReservedWordController extends Controller
 {
     public function list() {                            // to list all ReservedWord
         $reservedWords = ReservedWord::all();
-        return view('dashboard.reserved', compact('reservedWords'));
+        return view('reserved.reservedList', compact('reservedWords'));
     }
 
                                                         // to delete ReservedWord
@@ -22,7 +22,7 @@ class ReservedWordController extends Controller
                                                         //Show create ReservedWord form
 
     public function create() {
-        return view('dashboard.addReservedWord');
+        return view('reserved.addReservedWord');
     }
 
                                                     //Save the new ReservedWord
@@ -35,10 +35,19 @@ class ReservedWordController extends Controller
         //column name
             'word' => $request->word,
         ]);
-
+      
         return redirect()->route('dashboard')->with('success', 'Reserved word added successfully.');
     }
 
+
+
+    public function edit($id){
+        $reservedWords = ReservedWord::findOrFail($id);
+        return view('reseverd.EditReseverd', compact('resreservedWord'));
+
+    }
+
 };
+
 
 
