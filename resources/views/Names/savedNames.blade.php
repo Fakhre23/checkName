@@ -14,7 +14,7 @@
                 <td class="py-2 px-4">{{ $name->id }}</td>
                 <td class="py-2 px-4">{{ $name->name }}</td>
                 <td class="py-2 px-4 flex space-x-2">
-                    <a href="#" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</a>
+                    <a href="{{ route('SavedNames.edit', $name->id)}}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</a>
                     <form method="POST" action="{{ route('savedNames.delete', $name->id) }}">
                         @csrf
                         @method('DELETE')
