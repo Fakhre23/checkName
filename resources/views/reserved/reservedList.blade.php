@@ -22,7 +22,7 @@
                 <td class="py-2 px-4">{{ $word->id }}</td>
                 <td class="py-2 px-4">{{ $word->word }}</td>
                 <td class="py-2 px-4 flex space-x-2">
-                    <a href="#" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</a>
+                    <a href="{{ route('reservedWords.edit', $word->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</a>
                     <form method="POST" action="{{ route('ReservedWord.delete', $word->id) }}">
                         @csrf
                         @method('DELETE')

@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Reserved Word</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-semibold">Edit Reserved Word</h2>
+    </x-slot>
+<div class="max-w-4xl mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-4">Edit Reserved Word</h2>
     
-</body>
-</html>
+    <form method="POST" action="{{ route('reservedWords.update', $reservedWords->id) }}">
+        @csrf
+        @method('PUT')
+        
+        <div class="mb-4">
+            <label for="word" class="block text-gray-700">Reserved Word</label>
+            <input type="text" name="word" id="word" value="{{ old('word', $reservedWords->word) }}" class="w-full p-2 border rounded" required>
+        </div>
+        
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Update Reserved Word
+        </button>
+    </form>
+</div>
+</x-app-layout>

@@ -74,7 +74,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::get('/reservedWords/{id}/edit', [ReservedWordController::class , 'edit'])->name('reservedWords.edit');
-    Route::put('/reservedWords/{id}'. [ReservedWordController::class. 'update'])->name('reservedWords.update');
+    Route::put('/reservedWords/{id}', [ReservedWordController::class , 'update'])->name('reservedWords.update');
 
 
 

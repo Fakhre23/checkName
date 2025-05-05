@@ -32,7 +32,7 @@
 
 
 
-    {{-- ********  AJAX and Interactivity ********  --}}
+    {{-- ********  AJAX and Interactivity //// (ChatGPT do that not me) ********  --}}  
     <script>
         document.getElementById('showSavedNames').addEventListener('click', function() {
             fetch('/dashboard/names')

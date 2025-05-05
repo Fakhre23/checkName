@@ -43,9 +43,24 @@ class ReservedWordController extends Controller
 
     public function edit($id){
         $reservedWords = ReservedWord::findOrFail($id);
-        return view('reseverd.EditReseverd', compact('resreservedWord'));
+        return view('reserved.EditReseverd', compact('reservedWords'));
 
     }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'word' => 'required|string|max:255|unique:reserved_words,word,' . $id,
+        ]);
+
+        $reservedWord = ReservedWord::findOrFail($id);
+        $reservedWord->word = $request->word;
+        $reservedWord->save();
+
+        return redirect()->route('dashboard')->with('success', 'Reserved Word updated successfully.');
+    }
+    
 
 };
 
