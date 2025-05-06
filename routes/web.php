@@ -24,9 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-                                                         // Faq static page
+                                                    // Faq static page
 Route::get('faq', function () {
     return view('faq');
 });
@@ -34,13 +32,26 @@ Route::get('faq', function () {
                                                                  // Dynamic FAQ page from Controller
 Route::get('/faq', [FaqController::class, 'index']);
 
-                                                                    // Handle name form submission
-Route::post('/NameForm', [NameController::class, 'checkName']);
 
+
+
+     
                                                                     // Dashboard page
 Route::get('/dashboard', function () {
     return view('dashboard/index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+
+
+Route::get('/NameForm', function () {                       //show the check name page
+    return view('searchName');
+});
+
+                                                                 // Handle name form submission
+Route::post('/NameForm', [NameController::class, 'checkName']);
+
 
 
 
@@ -53,6 +64,7 @@ Route::middleware('auth')->group(function () {
 
                                                                                         // Users route for authenticated users
 Route::get('/users', [UserController::class, 'index'])->middleware('auth');
+
 
 
 
@@ -77,11 +89,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/reservedWords/{id}', [ReservedWordController::class , 'update'])->name('reservedWords.update');
 
 
+    Route::get('/names/{id}/edit', [SavedNameController::class , 'edit'])->name('SavedNames.edit');
+    Route::put('/names/{id}', [SavedNameController::class , 'update'])->name('SavedNames.update');
 
+    
 
-    Route::get('/NameForm', function () {                       //show the check name page
-        return view('searchName');
-    });
+ 
 
 
     

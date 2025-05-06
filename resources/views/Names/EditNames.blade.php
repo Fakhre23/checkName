@@ -11,7 +11,7 @@
         
         <div class="mb-4">
             <label for="word" class="block text-gray-700">Reserved Word</label>
-            <input type="text" name="word" id="word" value="{{ old('name', $savedNames->name) }}" class="w-full p-2 border rounded" required>
+            <input type="text" name="name" id="name" value="{{ old('name', $savedNames->name) }}" class="w-full p-2 border rounded" required>
         </div>
         
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
