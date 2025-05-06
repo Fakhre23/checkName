@@ -12,6 +12,15 @@
                     <a href="#" id="showReservedWords" class="block bg-gray-700 hover:bg-gray-600 rounded p-2">Reserved Words</a>
                 </li>
             </ul>
+            <h2 class="text-2xl font-bold mb-8">Features</h2>
+            <ul class="space-y-4">
+                <li>
+                    <a href="{{ route('searchName');  }}" id="NameCheker" class="block bg-gray-700 hover:bg-gray-600 rounded p-2">NameCheker</a>
+                </li>
+                <li>
+                    <a href="{{ route('faqPage');  }}" id="faq" class="block bg-gray-700 hover:bg-gray-600 rounded p-2">faq</a>
+                </li>
+            </ul>
         </div>
         
 
@@ -49,5 +58,8 @@
                     document.getElementById('contentArea').innerHTML = html;
                 });
         });
+
+
+
     </script>
 </x-app-layout>

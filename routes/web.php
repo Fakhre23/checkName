@@ -24,14 +24,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-                                                    // Faq static page
-Route::get('faq', function () {
+
+/*                                                     // Faq static page
+Route::get('/faq', function () {
     return view('faq');
-});
+}); */
 
                                                                  // Dynamic FAQ page from Controller
-Route::get('/faq', [FaqController::class, 'index']);
-
+Route::get('/faq', [FaqController::class, 'index'])->name('faqPage');
 
 
 
@@ -47,7 +47,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/NameForm', function () {                       //show the check name page
     return view('searchName');
-});
+})->name('searchName');
 
                                                                  // Handle name form submission
 Route::post('/NameForm', [NameController::class, 'checkName']);
