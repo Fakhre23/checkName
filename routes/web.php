@@ -68,18 +68,18 @@ Route::get('/users', [UserController::class, 'index'])->middleware('auth');
 
 
 
-                                                                                        // Reserved words and saved names routes with authentication and verification
+                                                                                                 // Reserved words and saved names routes with authentication and verification
 Route::middleware(['auth', 'verified'])->group(function () {
-                                                                                         // Route for reserved words
+                                                                                                  // Route for reserved words
     Route::get('/dashboard/names', [SavedNameController::class, 'list'])->name('dashboard.names');
-                                                                                         // Route for saved names
+                                                                                                   // Route for saved names
     Route::get('/dashboard/reserved', [ReservedWordController::class, 'list'])->name('dashboard.reserved');
-                                                                                        // Route foe delete names 
+                                                                                                    // Route foe delete names 
     Route::delete('/names/{id}', [SavedNameController::class, 'destroy'])->name('savedNames.delete');
-                                                                                        //Route for delete re
+                                                                                                        //Route for delete re
     Route::delete('/reserved/{id}', [ReservedWordController::class, 'destroy'])->name('ReservedWord.delete');
 
-                                                                                        // to go for adding form and store it 
+                                                                                                            // to go for adding form and store it 
     Route::get('dashboard/reservedWords/create', [ReservedWordController::class, 'create'])->name('reservedWords.create');
     Route::post('dashboard/reservedWords', [ReservedWordController::class, 'store'])->name('reservedWords.store');
 
@@ -88,7 +88,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/reservedWords/{id}/edit', [ReservedWordController::class , 'edit'])->name('reservedWords.edit');
     Route::put('/reservedWords/{id}', [ReservedWordController::class , 'update'])->name('reservedWords.update');
 
-
+                                                                                                                        //to edit names and reseverdwords
     Route::get('/names/{id}/edit', [SavedNameController::class , 'edit'])->name('SavedNames.edit');
     Route::put('/names/{id}', [SavedNameController::class , 'update'])->name('SavedNames.update');
 
