@@ -12,5 +12,10 @@ class FaqController extends Controller
         $faqs = Faq::all();
         return view('faq', compact('faqs'));
     }
+
+
+    public function create() {
+        //
+    }
 }
 

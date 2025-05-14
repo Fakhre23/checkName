@@ -1,18 +1,50 @@
+# Node, Composer, Vendor
 /node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
 /vendor
+
+# Laravel environment & auth
 .env
 .env.backup
 .env.production
+/storage/*.key
+auth.json
+
+# Laravel storage & build
+/public/storage
+/public/build
+/public/hot
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+/storage/oauth-private.key
+/storage/oauth-public.key
+
+# Laravel mix/Vite
+/public/mix-manifest.json
+/.vite
+/public/build
+
+# Testing & results
 .phpunit.result.cache
+
+# Homestead
 Homestead.json
 Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
+
+# IDEs and editors
 /.idea
 /.vscode
+/.fleet
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Lock files (optional)
+composer.lock
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
