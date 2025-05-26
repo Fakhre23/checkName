@@ -51,7 +51,7 @@
 
 
   <div class="faq-button">
-    <a href="/faq" class="btn-faq">Go to FAQ</a>
+    <a href="/faqs" class="btn-faq">Go to FAQ</a>
   </div>
 
 
