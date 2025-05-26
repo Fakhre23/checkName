@@ -10,10 +10,10 @@ class FaqController extends Controller
 
 
     public function publicIndex()
-{
-    $faqs = Faq::all();
-    return view('faqs.public', compact('faqs'));
-}
+    {
+        $faqs = Faq::all();
+        return view('faqs.public', compact('faqs'));
+    }
 
 
 
@@ -25,24 +25,30 @@ class FaqController extends Controller
     }
 
 
-    public function create() {
-        return view('admin.faq.index');
+    public function create()
+    {
+        return view('admin.faq.create');
     }
 
-    public function store(Request $request) {
+
+    public function store(Request $request)
+    {
         $request->validate([
-            'qustion' => 'required',
-            'answer' => 'required'
+            'question' => 'required',
+            'answer' => 'required',
         ]);
-        Faq::create($request->all());
-        return redirect()->route('//');
+        Faq::create($request->only('question', 'answer'));
+        return redirect()->route('dashboard');
     }
 
-    public function edit() {
-        return view('//', compact('faq'));
+
+    public function edit($id)
+    {
+        return view('', compact('faq'));
     }
 
-    public function update(Request $request, Faq $faq) {
+    public function update(Request $request, Faq $faq)
+    {
         $request->validate([
             'qustion' => 'required',
             'answer' => 'required'
@@ -51,10 +57,11 @@ class FaqController extends Controller
         return redirect()->route('//');
     }
 
-    public function destroy(Faq $faq) {
+    public function destroy(Faq $faq)
+    {
         $faq->delete();
         return redirect()->route('//');
     }
-    
+
 }
 

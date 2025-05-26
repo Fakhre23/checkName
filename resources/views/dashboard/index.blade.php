@@ -21,8 +21,7 @@
                         class="block bg-gray-700 hover:bg-gray-600 rounded p-2">NameCheker</a>
                 </li>
                 <li>
-                    <a href="{{ route('faq.auth') }}" id="faq"
-                        class="block bg-gray-700 hover:bg-gray-600 rounded p-2">FAQs</a>
+                    <a href="#" id="shwofaq" class="block bg-gray-700 hover:bg-gray-600 rounded p-2">FAQs</a>
                 </li>
             </ul>
         </div>
@@ -31,13 +30,14 @@
         {{-- ********  Main Content ********  --}}
 
         <div class="flex-1 p-10 overflow-auto">
-            <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+            <h1 class="text-3xl font-bold mb-6 text-white">Dashboard</h1>
 
             {{-- ********   Area where content will be injected ********   --}}
             <div id="contentArea">
                 <p class="text-gray-600">Please select an option from the sidebar.</p>
             </div>
         </div>
+
 
 
     </div>
@@ -64,8 +64,8 @@
         });
 
 
-        document.getElementById('showFAQs').addEventListener('click', function() {
-            fetch('/admin/faq/index')
+        document.getElementById('shwofaq').addEventListener('click', function() {
+            fetch('/faq')
                 .then(response => response.text())
                 .then(html => {
                     document.getElementById('contentArea').innerHTML = html;

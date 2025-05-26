@@ -1,9 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold">Edit Reserved Word</h2>
-    </x-slot>
 <div class="max-w-4xl mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-4">Edit Reserved Word</h2>
+    <h2 class="text-2xl font-bold text-white mb-4">Edit Reserved Word</h2>
     
     <form method="POST" action="{{ route('reservedWords.update', $reservedWords->id) }}">
         @csrf
