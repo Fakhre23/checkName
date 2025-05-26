@@ -44,18 +44,22 @@ class FaqController extends Controller
 
     public function edit($id)
     {
-        return view('', compact('faq'));
+        $faqs = Faq::findOrFail($id);
+        return view('admin.faq.edit', compact('faqs'));
     }
 
-    public function update(Request $request, Faq $faq)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'qustion' => 'required',
-            'answer' => 'required'
+            'question' => 'required|string|max:255|unique:faqs,question,' . $id,
+            'answer' => 'required|string|max:255|unique:faqs,answer,' . $id,
         ]);
-        $faq->update($request->all());
-        return redirect()->route('//');
+
+        Faq::findOrFail($id)->update($request->only('question', 'answer'));
+
+        return redirect()->route('dashboard');
     }
+
 
     public function destroy(Faq $faq)
     {
