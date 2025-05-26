@@ -61,10 +61,11 @@ class FaqController extends Controller
     }
 
 
-    public function destroy(Faq $faq)
+    public function destroy($id)
     {
+        $faq = Faq::findOrFail($id);
         $faq->delete();
-        return redirect()->route('//');
+        return redirect()->route('dashboard');
     }
 
 }
