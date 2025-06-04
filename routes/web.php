@@ -105,9 +105,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // this line of code complete all CRUD operations
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    /*  Route::post('/faq', [FaqController::class , 'store'])->name('faqs.store');
-     Route::delete('/faq', [FaqController::class , 'destroy'])->name('faqs.destroy');
-      */
+    
     Route::resource('faq', FaqController::class); // Handles all CRUD (index, create, edit, etc.)
 
 });
