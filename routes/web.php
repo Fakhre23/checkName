@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SavedNameController;
 use App\Http\Controllers\ReservedWordController;
 
+
 use Illuminate\Support\Facades\Route;       //Illuminate is a namespace that contains many useful classes created by Laravel.
 
 /*
@@ -109,6 +110,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('faq', FaqController::class); // Handles all CRUD (index, create, edit, etc.)
 
 });
+
+
+
+
+
+
 
 
 
