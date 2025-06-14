@@ -207,6 +207,12 @@ routes/
 
 ---
 
+## 📫 Connect with Me
+
+* [LinkedIn: Fakhre Tamimie](https://www.linkedin.com/in/fakhre-tamimie-6225b3282/)
+
+---
+
 ## ⚖️ License
 
-MIT License. Made with ❤️ by Fakhri Tamimie.
+MIT License. Made with ❤️ by Fakhre Tamimie.
