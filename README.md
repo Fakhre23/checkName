@@ -1,71 +1,212 @@
-<<<<<<< HEAD
-# checkName
-this is first web based application using laravel its program check if the name you entered is available
-=======
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Admin Panel + JWT + DeepSeek AI Integration
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a full-featured Laravel-based web application that provides a secure admin dashboard with AI-powered name classification using DeepSeek. The project is protected by JWT authentication and includes FAQ management restricted to admin users.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Admin dashboard with sidebar navigation
+* FAQ management (CRUD) restricted to authenticated admin users
+* JWT authentication for secure API access
+* DeepSeek AI API integration to classify user-entered names
+* Middleware-protected routes for role-based access
+* Modern UI using Blade templates and Tailwind CSS
+* Dynamic content loading with JavaScript (AJAX fetch)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🚀 Getting Started
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clone the Repository
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone https://github.com/your-username/project-name.git
+cd project-name
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Install Dependencies
 
-## Laravel Sponsors
+```bash
+composer install
+npm install && npm run dev
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 3. Configure Environment
 
-### Premium Partners
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Update `.env` file with:
 
-## Contributing
+```env
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+JWT_SECRET=your_jwt_secret
+DEEPSEEK_API_KEY=your_deepseek_api_key
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Generate JWT secret:
 
-## Code of Conduct
+```bash
+php artisan jwt:secret
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Run Migrations
 
-## Security Vulnerabilities
+```bash
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 5. Serve the Application
 
-## License
+```bash
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
->>>>>>> 39c3b56 (first commit)
+---
+
+## 🔐 JWT Authentication
+
+**Login**
+
+```http
+POST /api/login
+```
+
+Payload:
+
+```json
+{
+  "email": "admin@example.com",
+  "password": "password"
+}
+```
+
+Returns:
+
+```json
+{
+  "token": "your_jwt_token"
+}
+```
+
+Use this token for protected API routes.
+
+---
+
+## 🧑‍💻 Admin Access
+
+### Middleware
+
+Only users with `is_admin = true` can access admin routes.
+
+### Routes
+
+Defined in `routes/web.php`:
+
+```php
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::resource('faq', FaqController::class);
+});
+```
+
+### Middleware Logic
+
+Located in `app/Http/Middleware/AdminMiddleware.php`:
+
+```php
+if (auth()->check() && auth()->user()->is_admin) {
+    return $next($request);
+}
+abort(403);
+```
+
+---
+
+## 🕹️ DeepSeek API Integration
+
+**Route**: `/api/deepseek`
+
+Payload:
+
+```json
+{
+  "question": "What is the category of the name Fakhri?"
+}
+```
+
+Returns:
+
+```json
+{
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "content": "The name Fakhri is an Arabic name meaning proud."
+        }
+      }
+    ]
+  }
+}
+```
+
+**Controller**: `DeepSeekController.php`
+
+```php
+$response = Http::withToken(env('DEEPSEEK_API_KEY'))
+    ->post('https://api.deepseek.com/chat/completions', [
+        'model' => 'deepseek-chat',
+        'messages' => [['role' => 'user', 'content' => $question]]
+    ]);
+```
+
+---
+
+## 📃 FAQ Management
+
+**Views**:
+
+* `resources/views/admin/faq/index.blade.php`
+* `create.blade.php`, `edit.blade.php`
+
+**Controller**: `FaqController.php`
+
+* Index, create, store, edit, update, destroy methods
+
+**Model**: `Faq.php`
+
+```php
+protected $fillable = ['question', 'answer'];
+```
+
+---
+
+## 📅 Project Structure
+
+```
+app/
+├── Http/Controllers/
+│   ├── AuthController.php
+│   ├── FaqController.php
+│   └── DeepSeekController.php
+├── Models/Faq.php
+├── Middleware/AdminMiddleware.php
+resources/views/admin/faq/
+├── index.blade.php
+├── create.blade.php
+└── edit.blade.php
+routes/
+├── api.php (for login + deepseek)
+└── web.php (admin panel)
+```
+
+---
+
+## ⚖️ License
+
+MIT License. Made with ❤️ by Fakhri Tamimie.
