@@ -1,4 +1,4 @@
-# Laravel Admin Panel + JWT + DeepSeek AI Integration
+# Laravel Admin Panel + WordCheker WebApp
 
 This project is a full-featured Laravel-based web application that provides a secure admin dashboard with AI-powered name classification using DeepSeek. The project is protected by JWT authentication and includes FAQ management restricted to admin users.
 
